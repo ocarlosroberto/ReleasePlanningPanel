@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Capacity } from './../models/Capacity.model';
+import { Envolvimento } from './../models/Envolvimento.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +19,13 @@ export class CapacityService {
         return throwError(err);;
       }));
   }
+
+  getEnvolvimentos(): Observable<Envolvimento[]> {
+    return this.http.get<Envolvimento[]>('http://localhost:5278/envolvimentos')
+      .pipe(catchError((err) => {
+        console.error(err);
+        return throwError(err);;
+      }));
+  }
+
 }
