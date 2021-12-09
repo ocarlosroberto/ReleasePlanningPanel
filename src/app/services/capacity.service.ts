@@ -12,7 +12,7 @@ export class CapacityService {
   constructor(private http: HttpClient) { }
 
   getCapacity(): Observable<Capacity> {
-    return this.http.get<Capacity>('https://releaseplanningfunction.azurewebsites.net/api/getPessoas')
+    return this.http.get<Capacity>('http://localhost:5278/capacity')
       .pipe(catchError((err) => {
         console.error(err);
         return throwError(err);;
